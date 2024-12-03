@@ -17,7 +17,7 @@ create_customers_table = '''CREATE TABLE IF NOT EXISTS Customers (
                             phone TEXT
                          )'''
 
-create_sales_table = '''CREATE TABLE IF NOT EXISTS Sales_2022 (
+create_sales_table = '''CREATE TABLE IF NOT EXISTS Sales (
                         sale_id INTEGER PRIMARY KEY,
                         sale_date DATE,
                         customer_id INTEGER,
@@ -32,7 +32,7 @@ create_sales_table = '''CREATE TABLE IF NOT EXISTS Sales_2022 (
 # Define SQL commands for inserting sample data into the tables
 insert_products_data = '''INSERT INTO Products (product_name, unit_cost) VALUES (?, ?)'''
 insert_customers_data = '''INSERT INTO Customers (first_name, last_name, email, phone) VALUES (?, ?, ?, ?)'''
-insert_sales_data = '''INSERT INTO Sales_2022 (sale_date, customer_id, product_id, quantity, unit_price, total_price) VALUES (?, ?, ?, ?, ?, ?)'''
+insert_sales_data = '''INSERT INTO Sales (sale_date, customer_id, product_id, quantity, unit_price, total_price) VALUES (?, ?, ?, ?, ?, ?)'''
 
 # Define sample data for the products and customers tables
 Products = [('Product A', 50.00), ('Product B', 25.00), ('Product C', 75.00), ('Product D', 40.00), ('Product E', 60.00)]
@@ -55,7 +55,7 @@ start_date = datetime.date(2022, 1, 1)
 end_date = datetime.date(2022, 12, 31)
 
 # Connect to the database and create the tables
-with sqlite3.connect('Sales_Analysis.db') as conn:
+with sqlite3.connect('Sales.db') as conn:
     cursor = conn.cursor()
     
     # Create the tables
